@@ -8,13 +8,15 @@ RegisterServerEvent("SyncWerbung")
 AddEventHandler('SyncWerbung', function(inputText)
 	if os.time(os.date("!*t")) > (lastAdDate + Config.Time) then
 		lastAdDate = os.time(os.date("!*t"))
-		local _source = source
-		local xPlayer = ESX.GetPlayerFromId(_source)
-		TriggerClientEvent('DisplayWerbung', -1, inputText, xPlayer.getName())
+
 
 		local xPlayer = ESX.GetPlayerFromId(source)
 		if xPlayer.getMoney() >= Config.Price then
 			xPlayer.removeMoney(Config.Price)
+
+			local _source = source
+			local xPlayer = ESX.GetPlayerFromId(_source)
+			TriggerClientEvent('DisplayWerbung', -1, inputText, xPlayer.getName())
 		else
 			TriggerClientEvent('AdError', source, "Du hast nicht genug Geld dabei.")
 		end
