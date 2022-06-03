@@ -1,0 +1,85 @@
+<html>
+  <header>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="index.css" />
+  </header>
+
+  <body>
+    <!---Our content will soon go here!-->
+    <div id="wrapper" style="display: none">
+      <div
+        id="closer"
+        style="
+          padding: 10px 10px 5px 10px;
+          border-top-left-radius: 15px;
+          border-top-right-radius: 15px;
+          align-items: flex-end;
+          margin-left: auto;
+        "
+      >
+        <a style="margin-left: auto; color: white"><i data-feather="x"></i></a>
+      </div>
+      <div id="header">
+        <h1 style="color: white; font-weight: normal">
+          <span style="font-weight: bold">Life</span>Invader
+        </h1>
+        <p style="color: white; padding-top: 15px; font-weight: 300">
+          Schalte deine persöhnliche Werbeanzeige
+        </p>
+      </div>
+      <div
+        id="main"
+        style="display: flex; flex-direction: column; padding: 0 40px 0 40px"
+      >
+        <span> Maximal 150 Zeichen! </span>
+        <textarea
+          name="test"
+          id="textarea"
+          cols="30"
+          rows="2"
+          placeholder="Dein Werbetext"
+          maxlength="150"
+        ></textarea>
+      </div>
+      <div id="footer">
+        <span style="color: white">Kosten: $100000</span>
+        <button id="submit">werbung schalten</button>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  window.addEventListener("message", function (event) {
+    var item = event.data;
+    if (item.showUI) {
+      $("#wrapper").show();
+    } else {
+      $("#wrapper").hide();
+    }
+  });
+
+  $(document).ready(function () {
+    $("#submit").click(() => {
+      const textarea = $("#textarea").val();
+      console.log(textarea);
+
+      $.post("http://LifeInvader/lifeoff", JSON.stringify({ value: textarea }));
+    });
+  });
+
+  feather.replace();
+</script>
