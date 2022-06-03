@@ -20,6 +20,20 @@
   <body>
     <!---Our content will soon go here!-->
     <div id="wrapper" style="display: none">
+      <div
+        id="closer"
+        style="
+          padding: 10px 10px 5px 10px;
+          border-top-left-radius: 15px;
+          border-top-right-radius: 15px;
+          align-items: flex-end;
+          margin-left: auto;
+        "
+      >
+        <a id="closeit" style="margin-left: auto; color: white"
+          ><i data-feather="x"></i
+        ></a>
+      </div>
       <div id="header">
         <h1 style="color: white; font-weight: normal">
           <span style="font-weight: bold">Life</span>Invader
@@ -67,6 +81,13 @@
 
       $.post(
         "http://esx_lifeinvader/lifeoff",
+        JSON.stringify({ value: textarea })
+      );
+    });
+
+    $("#closeit").click(() => {
+      $.post(
+        "http://esx_lifeinvader/nuioff",
         JSON.stringify({ value: textarea })
       );
     });
