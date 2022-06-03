@@ -80,16 +80,13 @@
       console.log(textarea);
 
       $.post(
-        "http://esx_lifeinvader/lifeoff",
+        "http://esx_lifeinvader-main/lifeoff",
         JSON.stringify({ value: textarea })
       );
     });
 
     $("#closeit").click(() => {
-      $.post(
-        "http://esx_lifeinvader/nuioff",
-        JSON.stringify({ value: textarea })
-      );
+      $.post("http://esx_lifeinvader-main/nuioff");
     });
   });
 

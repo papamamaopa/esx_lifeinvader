@@ -95,9 +95,18 @@ RegisterNUICallback("lifeoff", function(data, cb)
 
 end)
 
+RegisterNUICallback("nuioff", function(data, cb)
+
+	SendNUIMessage({ showUI = false })
+	ui = false
+	SetNuiFocus(
+		false, false
+	)
+
+end)
+
 RegisterNetEvent("nuioff")
 AddEventHandler("nuioff", function(value)
-	LeaveCursorMode()
 	SendNUIMessage({ showUI = false })
 	ui = false
 	SetNuiFocus(
