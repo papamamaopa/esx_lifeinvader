@@ -77,7 +77,10 @@
       const textarea = $("#textarea").val();
       console.log(textarea);
 
-      $.post("http://LifeInvader/lifeoff", JSON.stringify({ value: textarea }));
+      $.post(
+        "http://esx_lifeinvader/lifeoff",
+        JSON.stringify({ value: textarea })
+      );
     });
   });
 
